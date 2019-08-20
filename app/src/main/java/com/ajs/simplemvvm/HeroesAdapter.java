@@ -1,15 +1,13 @@
 package com.ajs.simplemvvm;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.ajs.simplemvvm.databinding.ItemHeroBinding;
 
 import java.util.List;
 
@@ -26,19 +24,16 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
     @NonNull
     @Override
     public HeroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mCtx).inflate(R.layout.item_hero, parent, false);
-        return new HeroViewHolder(view);
+        ItemHeroBinding binding =
+                DataBindingUtil.inflate(LayoutInflater.from(mCtx), R.layout.item_hero, parent, false);
+
+        return new HeroViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HeroViewHolder holder, int position) {
         Hero hero = heroList.get(position);
-
-        Glide.with(mCtx)
-                .load(hero.getImageurl())
-                .into(holder.imageView);
-
-        holder.textView.setText(hero.getName());
+        holder.binding.setHero(hero);
     }
 
     @Override
@@ -48,14 +43,11 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
 
     class HeroViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView textView;
+        ItemHeroBinding binding;
 
-        public HeroViewHolder(View itemView) {
-            super(itemView);
-
-            imageView = itemView.findViewById(R.id.imageView);
-            textView = itemView.findViewById(R.id.textView);
+        public HeroViewHolder(final ItemHeroBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

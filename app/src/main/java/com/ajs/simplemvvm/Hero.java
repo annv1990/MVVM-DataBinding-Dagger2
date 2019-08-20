@@ -1,5 +1,9 @@
 package com.ajs.simplemvvm;
 
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,7 +28,7 @@ public class Hero {
     private String publisher;
     @SerializedName("imageurl")
     @Expose
-    private String imageurl;
+    String imageurl;
     @SerializedName("bio")
     @Expose
     private String bio;
@@ -81,6 +85,12 @@ public class Hero {
         return imageurl;
     }
 
+    @BindingAdapter("imageUrl")
+    public static void loadImage(ImageView iv, String url) {
+        Glide.with(iv.getContext())
+                .load(url)
+                .into(iv);
+    }
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
