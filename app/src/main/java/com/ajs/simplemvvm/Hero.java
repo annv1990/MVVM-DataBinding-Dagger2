@@ -91,6 +91,7 @@ public class Hero {
                 .load(url)
                 .into(iv);
     }
+
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
     }
