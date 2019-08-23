@@ -3,6 +3,8 @@ package com.ajs.simplemvvm;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.ajs.simplemvvm.base.BaseViewModel;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -11,7 +13,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class HeroesViewModel extends ViewModel {
+public class HeroesViewModel extends BaseViewModel {
 
     //this is the data that we will fetch asynchronously
     private MutableLiveData<List<Hero>> heroList;
@@ -30,8 +32,6 @@ public class HeroesViewModel extends ViewModel {
                 .baseUrl(Api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-
         Api api = retrofit.create(Api.class);
 
         Call<List<Hero>> call = api.getHeroes();

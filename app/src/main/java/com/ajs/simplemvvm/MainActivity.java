@@ -2,41 +2,38 @@ package com.ajs.simplemvvm;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.base.ClickHandler;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel> {
 
     ActivityMainBinding mMainBinding;
     RecyclerView recyclerView;
     HeroesAdapter adapter;
     ClickHandler mClickHandler;
-
+    HeroesViewModel heroesViewModel;
     List<Hero> heroList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mClickHandler = new ClickHandler(this);
-        mMainBinding.setClickHandler(mClickHandler);
 
+        mClickHandler = new ClickHandler(this);
+//        mMainBinding.setClickHandler(mClickHandler);
+        mMainBinding = getViewDataBinding();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        HeroesViewModel model = ViewModelProviders.of(this).get(HeroesViewModel.class);
-
-        model.getHeroes().observe(this, new Observer<List<Hero>>() {
+        ((HeroesViewModel)getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
             public void onChanged(@Nullable List<Hero> heroes) {
                 adapter = new HeroesAdapter(MainActivity.this, heroes);
@@ -44,5 +41,27 @@ public class MainActivity extends AppCompatActivity {
                 mMainBinding.setFavoriteHero(heroes.get(0));
             }
         });
+    }
+
+    @Override
+    protected int getResourceLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public ActivityMainBinding getViewDataBinding() {
+        return super.getViewDataBinding();
+    }
+
+    @Override
+    public HeroesViewModel getViewModel() {
+        if(heroesViewModel == null)
+            heroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel.class);
+        return heroesViewModel;
     }
 }

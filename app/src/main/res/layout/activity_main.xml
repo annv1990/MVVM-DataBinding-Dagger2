@@ -15,6 +15,9 @@
         <variable
             name="adapter"
             type="com.ajs.simplemvvm.HeroesAdapter" />
+        <variable
+            name="viewModel"
+            type="com.ajs.simplemvvm.HeroesViewModel" />
 
     </data>
 
