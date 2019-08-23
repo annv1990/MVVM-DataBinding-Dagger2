@@ -1,4 +1,4 @@
-package com.ajs.simplemvvm;
+package com.ajs.simplemvvm.ui.heroes;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.databinding.ItemHeroBinding;
+import com.ajs.simplemvvm.model.Hero;
 
 import java.util.List;
 

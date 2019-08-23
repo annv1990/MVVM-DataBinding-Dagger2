@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import com.ajs.simplemvvm.BR;
-import com.ajs.simplemvvm.MainActivity;
+import com.ajs.simplemvvm.ui.MainActivity;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivitySplashBinding;

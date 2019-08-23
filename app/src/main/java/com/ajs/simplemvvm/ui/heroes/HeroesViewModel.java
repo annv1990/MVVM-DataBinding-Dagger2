@@ -1,9 +1,10 @@
-package com.ajs.simplemvvm;
+package com.ajs.simplemvvm.ui.heroes;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
 
 import com.ajs.simplemvvm.base.BaseViewModel;
+import com.ajs.simplemvvm.model.Hero;
+import com.ajs.simplemvvm.network.Api;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class HeroesViewModel extends BaseViewModel {
 
     private void loadHeroes() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Api.BASE_URL)
+                .baseUrl(Api.HERO_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         Api api = retrofit.create(Api.class);

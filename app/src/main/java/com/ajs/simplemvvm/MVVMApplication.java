@@ -1,4 +1,4 @@
-package com.ajs.simplemvvm.base;
+package com.ajs.simplemvvm;
 
 import android.app.Application;
 

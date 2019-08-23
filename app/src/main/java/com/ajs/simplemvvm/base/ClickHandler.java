@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ajs.simplemvvm.MVVMApplication;
+
 public class ClickHandler {
 
     Context context;

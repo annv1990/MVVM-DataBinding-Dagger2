@@ -10,21 +10,21 @@
 
         <variable
             name="favoriteHero"
-            type="com.ajs.simplemvvm.Hero" />
+            type="com.ajs.simplemvvm.model.Hero" />
 
         <variable
             name="adapter"
-            type="com.ajs.simplemvvm.HeroesAdapter" />
+            type="com.ajs.simplemvvm.ui.heroes.HeroesAdapter" />
         <variable
             name="viewModel"
-            type="com.ajs.simplemvvm.HeroesViewModel" />
+            type="com.ajs.simplemvvm.ui.heroes.HeroesViewModel" />
 
     </data>
 
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview"

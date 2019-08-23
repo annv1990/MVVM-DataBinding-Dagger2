@@ -1,4 +1,4 @@
-package com.ajs.simplemvvm;
+package com.ajs.simplemvvm.ui;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -10,11 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.ajs.simplemvvm.BR;
+import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.base.ClickHandler;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
+import com.ajs.simplemvvm.model.Hero;
 import com.ajs.simplemvvm.ui.blog.BlogActivity;
-import com.ajs.simplemvvm.ui.blog.BlogViewModel;
+import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
+import com.ajs.simplemvvm.ui.heroes.HeroesViewModel;
 
 import java.util.List;
 
@@ -32,7 +36,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         btnNext = findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
         mClickHandler = new ClickHandler(this);
-//        mMainBinding.setClickHandler(mClickHandler);
         mMainBinding = getViewDataBinding();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);

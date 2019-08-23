@@ -1,4 +1,4 @@
-package com.ajs.simplemvvm;
+package com.ajs.simplemvvm.model;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
