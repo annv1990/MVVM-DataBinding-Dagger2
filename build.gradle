@@ -25,3 +25,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+// Define versions in a single place
+ext {
+    dagger2Version = '2.16'
+    //retrofit
+    retrofit2Version = '2.5.0'
+}

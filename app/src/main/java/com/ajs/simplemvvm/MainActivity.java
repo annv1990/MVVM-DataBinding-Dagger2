@@ -2,30 +2,35 @@ package com.ajs.simplemvvm;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.base.ClickHandler;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
+import com.ajs.simplemvvm.ui.blog.BlogActivity;
+import com.ajs.simplemvvm.ui.blog.BlogViewModel;
 
 import java.util.List;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel> {
+public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel> implements View.OnClickListener {
 
     ActivityMainBinding mMainBinding;
     RecyclerView recyclerView;
     HeroesAdapter adapter;
     ClickHandler mClickHandler;
     HeroesViewModel heroesViewModel;
-    List<Hero> heroList;
-
+    Button btnNext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        btnNext = findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(this);
         mClickHandler = new ClickHandler(this);
 //        mMainBinding.setClickHandler(mClickHandler);
         mMainBinding = getViewDataBinding();
@@ -63,5 +68,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         if(heroesViewModel == null)
             heroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel.class);
         return heroesViewModel;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnNext : {
+                Intent i = new Intent(MainActivity.this, BlogActivity.class);
+                startActivity(i);
+                break;
+            }
+        }
     }
 }
