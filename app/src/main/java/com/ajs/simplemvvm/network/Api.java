@@ -15,7 +15,7 @@ public interface Api {
 
     String API_KEY = "ABCXYZ123TEST";
 
-    String OPEN_SOURCE_END_POINT = "5926c34212000035026871cd";
+    String OPEN_SOURCE_END_POINT = "/5926c34212000035026871cd";
 
     @GET(OPEN_SOURCE_END_POINT)
     Call<OpenSourceResponse> getOpenSourceApiCall(@HeaderMap Map<String, Object> headers);

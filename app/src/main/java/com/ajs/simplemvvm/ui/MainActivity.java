@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
                 recyclerView.setAdapter(adapter);
                 mMainBinding.setFavoriteHero(heroes.get(0));
             }
+
         });
     }
 

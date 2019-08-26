@@ -1,6 +1,7 @@
 package com.ajs.simplemvvm.ui.heroes;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.util.Log;
 
 import com.ajs.simplemvvm.base.BaseViewModel;
 import com.ajs.simplemvvm.model.Hero;
@@ -44,7 +45,7 @@ public class HeroesViewModel extends BaseViewModel {
 
             @Override
             public void onFailure(Call<List<Hero>> call, Throwable t) {
-
+                Log.d("ANNV","list repos " );
             }
         });
 
