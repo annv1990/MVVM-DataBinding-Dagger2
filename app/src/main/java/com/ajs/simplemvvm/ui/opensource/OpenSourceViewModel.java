@@ -1,13 +1,12 @@
-package com.ajs.simplemvvm.ui.blog;
+package com.ajs.simplemvvm.ui.opensource;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
-import com.ajs.simplemvvm.base.BaseViewModel;
 import com.ajs.simplemvvm.model.OpenSourceResponse;
 import com.ajs.simplemvvm.network.Api;
 import com.ajs.simplemvvm.network.RetrofitService;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,11 +15,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BlogViewModel extends BaseViewModel {
+public class OpenSourceViewModel {
 
-    List<OpenSourceResponse.Repo> repos = new ArrayList<>();
+    private final MutableLiveData<List<OpenSourceItemModel>> openSourceItemsLiveDate;
 
-    public List<OpenSourceResponse.Repo> fetchOpenSource() {
+    public OpenSourceViewModel() {
+        openSourceItemsLiveDate = new MutableLiveData<>();
+
+    }
+
+    public void fetchRepository() {
         Map<String, Object> headersMap = new HashMap<>();
         headersMap.put("access_token", "demo.token.from.mock.server");
         headersMap.put("api_key", "ABCXYZ123TEST");
@@ -30,16 +34,20 @@ public class BlogViewModel extends BaseViewModel {
             @Override
             public void onResponse(Call<OpenSourceResponse> call, Response<OpenSourceResponse> response) {
                 if (response.isSuccessful()) {
-                    repos = response.body().getData();
+//                    openSourceItemsLiveDate.setValue(response.body().getData());
                 }
-                Log.d("ANNV", "list repos " + repos.size());
+
+                Log.d("ANNV", "list repos ");
             }
 
             @Override
             public void onFailure(Call<OpenSourceResponse> call, Throwable t) {
-                Log.d("ANNV", "list repos " + repos.size());
+                Log.d("ANNV", "list repos ");
             }
         });
-        return repos;
+
     }
+
+
+
 }
