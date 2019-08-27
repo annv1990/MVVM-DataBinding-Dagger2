@@ -20,25 +20,26 @@ public class BlogViewModel extends BaseViewModel {
 
     List<OpenSourceResponse.Repo> repos = new ArrayList<>();
 
-    public  List<OpenSourceResponse.Repo> fetchOpenSource(){
+    public List<OpenSourceResponse.Repo> fetchOpenSource() {
         Map<String, Object> headersMap = new HashMap<>();
         headersMap.put("access_token", "demo.token.from.mock.server");
         headersMap.put("api_key", "ABCXYZ123TEST");
         headersMap.put("user_id", "1");
-        RetrofitService.createService(Api.class).getOpenSourceApiCall(headersMap).enqueue(new Callback<OpenSourceResponse>() {
+        Call<OpenSourceResponse> caller = RetrofitService.createService(Api.class).getOpenSourceApiCall(headersMap);
+        caller.enqueue(new Callback<OpenSourceResponse>() {
             @Override
             public void onResponse(Call<OpenSourceResponse> call, Response<OpenSourceResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     repos = response.body().getData();
                 }
-                Log.d("ANNV","list repos " + repos.size());
+                Log.d("ANNV", "list repos " + repos.size());
             }
 
             @Override
             public void onFailure(Call<OpenSourceResponse> call, Throwable t) {
-                Log.d("ANNV","list repos " + repos.size());
+                Log.d("ANNV", "list repos " + repos.size());
             }
         });
-        return  repos;
+        return repos;
     }
 }
