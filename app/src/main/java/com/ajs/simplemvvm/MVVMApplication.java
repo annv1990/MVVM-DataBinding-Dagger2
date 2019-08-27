@@ -1,24 +1,19 @@
 package com.ajs.simplemvvm;
 
+import android.app.Activity;
 import android.app.Application;
 
 import com.ajs.simplemvvm.di.component.DaggerAppComponent;
 
 import javax.inject.Inject;
 
-public class MVVMApplication extends Application {
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+
+public class MVVMApplication extends Application implements HasActivityInjector {
 
     @Inject
-    private static Application mInstance;
-
-    public static Application getInstance(){
-        synchronized (MVVMApplication.class) {
-            if(mInstance == null) {
-                mInstance = new MVVMApplication();
-            }
-        }
-        return mInstance;
-    }
+    DispatchingAndroidInjector<Activity> activityDispatchingAndroidInjector;
 
     @Override
     public void onCreate() {
@@ -27,5 +22,10 @@ public class MVVMApplication extends Application {
                 .appplicaiton(this)
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    public DispatchingAndroidInjector<Activity> activityInjector() {
+        return activityDispatchingAndroidInjector;
     }
 }

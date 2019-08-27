@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Toast;
 
-import com.ajs.simplemvvm.MVVMApplication;
-
 public class ClickHandler {
 
     Context context;
@@ -24,7 +22,7 @@ public class ClickHandler {
     }
 
     public boolean onProfileImageLongPressed(View view) {
-        Toast.makeText(MVVMApplication.getInstance(), "Profile image long pressed!", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "Profile image long pressed!", Toast.LENGTH_LONG).show();
         return false;
     }
 
