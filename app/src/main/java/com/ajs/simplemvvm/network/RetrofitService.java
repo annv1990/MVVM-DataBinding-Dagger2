@@ -9,7 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
-
     public static final String BASE_URL = "http://www.mocky.io/v2/";
 
     private static Retrofit retrofit = new Retrofit.Builder()
