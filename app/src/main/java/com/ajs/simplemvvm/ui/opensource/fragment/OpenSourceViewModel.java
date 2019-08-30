@@ -1,8 +1,9 @@
-package com.ajs.simplemvvm.ui.opensource;
+package com.ajs.simplemvvm.ui.opensource.fragment;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
+import com.ajs.simplemvvm.base.BaseViewModel;
 import com.ajs.simplemvvm.model.OpenSourceResponse;
 import com.ajs.simplemvvm.network.Api;
 import com.ajs.simplemvvm.network.RetrofitService;
@@ -15,16 +16,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OpenSourceViewModel {
+public class OpenSourceViewModel extends BaseViewModel {
 
-    private final MutableLiveData<List<OpenSourceItemModel>> openSourceItemsLiveDate;
+    private final MutableLiveData<List<OpenSourceResponse.Repo>> reposLiveData;
 
     public OpenSourceViewModel() {
-        openSourceItemsLiveDate = new MutableLiveData<>();
-
+        reposLiveData = new MutableLiveData<>();
     }
 
-    public void fetchRepository() {
+    public MutableLiveData<List<OpenSourceResponse.Repo>> fetchRepository() {
         Map<String, Object> headersMap = new HashMap<>();
         headersMap.put("access_token", "demo.token.from.mock.server");
         headersMap.put("api_key", "ABCXYZ123TEST");
@@ -34,7 +34,7 @@ public class OpenSourceViewModel {
             @Override
             public void onResponse(Call<OpenSourceResponse> call, Response<OpenSourceResponse> response) {
                 if (response.isSuccessful()) {
-//                    openSourceItemsLiveDate.setValue(response.body().getData());
+                    reposLiveData.setValue(response.body().getData());
                 }
 
                 Log.d("ANNV", "list repos ");
@@ -45,9 +45,9 @@ public class OpenSourceViewModel {
                 Log.d("ANNV", "list repos ");
             }
         });
+        return reposLiveData;
 
     }
-
 
 
 }

@@ -6,7 +6,7 @@
 
         <variable
             name="openSourceViewModel"
-            type="com.ajs.simplemvvm.ui.opensource.OpenSourceViewModel" />
+            type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceViewModel" />
 
     </data>
 
@@ -41,6 +41,12 @@
                 android:layout_gravity="center"
                 android:text="Fragment "
                 android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnOpenSource"
+                android:layout_gravity="center"
+                android:text="Fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </RelativeLayout>
 

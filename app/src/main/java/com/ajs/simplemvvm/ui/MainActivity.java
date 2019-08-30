@@ -19,6 +19,7 @@ import com.ajs.simplemvvm.model.Hero;
 import com.ajs.simplemvvm.ui.blog.BlogActivity;
 import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
 import com.ajs.simplemvvm.ui.heroes.HeroesViewModel;
+import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
 
 import java.util.List;
 
@@ -30,11 +31,14 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     ClickHandler mClickHandler;
     HeroesViewModel heroesViewModel;
     Button btnNext;
+    Button btnNextFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         btnNext = findViewById(R.id.btnNext);
+        btnNextFragment = findViewById(R.id.btnNextFragment);
         btnNext.setOnClickListener(this);
+        btnNextFragment.setOnClickListener(this);
         mClickHandler = new ClickHandler(this);
         mMainBinding = getViewDataBinding();
         recyclerView = findViewById(R.id.recyclerview);
@@ -79,6 +83,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         switch (v.getId()) {
             case R.id.btnNext : {
                 Intent i = new Intent(MainActivity.this, BlogActivity.class);
+                startActivity(i);
+                break;
+            }
+            case R.id.btnNextFragment:{
+                Intent i = new Intent(MainActivity.this, OpenSourceActivity.class);
                 startActivity(i);
                 break;
             }

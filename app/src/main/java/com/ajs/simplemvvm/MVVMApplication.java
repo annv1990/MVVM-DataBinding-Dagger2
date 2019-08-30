@@ -19,7 +19,7 @@ public class MVVMApplication extends Application implements HasActivityInjector 
     public void onCreate() {
         super.onCreate();
         DaggerAppComponent.builder()
-                .appplicaiton(this)
+                .application(this)
                 .build()
                 .inject(this);
     }

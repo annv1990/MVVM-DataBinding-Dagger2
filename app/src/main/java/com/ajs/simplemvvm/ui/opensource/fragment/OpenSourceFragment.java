@@ -1,18 +1,22 @@
-package com.ajs.simplemvvm.ui.opensource;
+package com.ajs.simplemvvm.ui.opensource.fragment;
 
+import com.ajs.simplemvvm.BR;
+import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseFragment;
 import com.ajs.simplemvvm.base.BaseViewModel;
+
+import javax.inject.Inject;
 
 public class OpenSourceFragment extends BaseFragment {
 
     @Override
     public int getBindingVariable() {
-        return 0;
+        return BR.openSourceViewModel;
     }
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.fragment_open_source;
     }
 
     @Override

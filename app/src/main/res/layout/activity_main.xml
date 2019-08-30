@@ -48,7 +48,13 @@
             <Button
                 android:id="@+id/btnNext"
                 android:layout_gravity="center"
-                android:text="Next"
+                android:text="Activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btnNextFragment"
+                android:layout_gravity="center"
+                android:text="Fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

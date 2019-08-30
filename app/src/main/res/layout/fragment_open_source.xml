@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.ajs.simplemvvm.ui.blog.BlogViewModel" />
@@ -12,13 +13,12 @@
     <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.blog.BlogActivity">
-        <ImageView
-            android:id="@+id/ivSplash"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
+        tools:context=".ui.opensource.OpenSourceActivity">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvOpenSource"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </layout>

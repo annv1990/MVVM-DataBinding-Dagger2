@@ -4,8 +4,8 @@ import com.ajs.simplemvvm.ui.MainActivity;
 import com.ajs.simplemvvm.ui.blog.BlogActivity;
 import com.ajs.simplemvvm.ui.blog.BlogActivityModule;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
-import com.ajs.simplemvvm.ui.opensource.OpenSourceFragmentProvider;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceModule;
+import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentProvider;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

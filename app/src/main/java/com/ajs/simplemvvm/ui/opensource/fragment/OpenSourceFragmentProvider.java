@@ -1,4 +1,4 @@
-package com.ajs.simplemvvm.ui.opensource;
+package com.ajs.simplemvvm.ui.opensource.fragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

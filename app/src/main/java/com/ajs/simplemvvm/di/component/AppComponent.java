@@ -22,7 +22,7 @@ public interface AppComponent {
     interface Builder {
 
         @BindsInstance
-        Builder appplicaiton(Application app);
+        Builder application(Application app);
 
         AppComponent build();
     }
