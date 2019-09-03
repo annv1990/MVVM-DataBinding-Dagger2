@@ -32,6 +32,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     HeroesViewModel heroesViewModel;
     Button btnNext;
     Button btnNextFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ((HeroesViewModel)getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
+        ((HeroesViewModel) getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
             public void onChanged(@Nullable List<Hero> heroes) {
                 adapter = new HeroesAdapter(MainActivity.this, heroes);
@@ -73,7 +74,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
     @Override
     public HeroesViewModel getViewModel() {
-        if(heroesViewModel == null)
+        if (heroesViewModel == null)
             heroesViewModel = ViewModelProviders.of(this).get(HeroesViewModel.class);
         return heroesViewModel;
     }
@@ -81,12 +82,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnNext : {
+            case R.id.btnNext: {
                 Intent i = new Intent(MainActivity.this, BlogActivity.class);
                 startActivity(i);
                 break;
             }
-            case R.id.btnNextFragment:{
+            case R.id.btnNextFragment: {
                 Intent i = new Intent(MainActivity.this, OpenSourceActivity.class);
                 startActivity(i);
                 break;

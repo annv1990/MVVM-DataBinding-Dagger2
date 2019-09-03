@@ -1,5 +1,6 @@
 package com.ajs.simplemvvm.ui.blog;
 
+import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
 import com.ajs.simplemvvm.base.BaseViewModel;
@@ -19,8 +20,9 @@ import retrofit2.Response;
 public class BlogViewModel extends BaseViewModel {
 
     List<OpenSourceResponse.Repo> repos = new ArrayList<>();
+    MutableLiveData<List<OpenSourceResponse.Repo>>reposLD = new MutableLiveData<>();
 
-    public List<OpenSourceResponse.Repo> fetchOpenSource() {
+    public MutableLiveData<List<OpenSourceResponse.Repo>> fetchOpenSource() {
         Map<String, Object> headersMap = new HashMap<>();
         headersMap.put("access_token", "demo.token.from.mock.server");
         headersMap.put("api_key", "ABCXYZ123TEST");
@@ -31,15 +33,18 @@ public class BlogViewModel extends BaseViewModel {
             public void onResponse(Call<OpenSourceResponse> call, Response<OpenSourceResponse> response) {
                 if (response.isSuccessful()) {
                     repos = response.body().getData();
+                    reposLD.setValue(response.body().getData());
                 }
-                Log.d("ANNV", "list repos " + repos.size());
+                Log.d("ANNV", "fetchOpenSource list repos  " + repos.size());
             }
 
             @Override
             public void onFailure(Call<OpenSourceResponse> call, Throwable t) {
                 Log.d("ANNV", "list repos " + repos.size());
+                reposLD.setValue(new ArrayList<>());
             }
         });
-        return repos;
+        return reposLD;
     }
+
 }

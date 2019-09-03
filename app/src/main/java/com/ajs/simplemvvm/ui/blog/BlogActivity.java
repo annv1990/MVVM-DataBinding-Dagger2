@@ -1,6 +1,6 @@
 package com.ajs.simplemvvm.ui.blog;
 
-import android.arch.lifecycle.ViewModelProviders;
+import android.arch.lifecycle.Observer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -9,6 +9,9 @@ import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivityBlogBinding;
+import com.ajs.simplemvvm.model.OpenSourceResponse;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -26,7 +29,14 @@ public class BlogActivity extends BaseActivity<ActivityBlogBinding, BlogViewMode
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         mViewModel.fetchOpenSource();
-        Log.d("ANNV", "list repos " + mViewModel.repos.size());
+        Log.d("ANNV", "onCreate list repos " + mViewModel.repos.size());
+        mBinding = getViewDataBinding();
+        mViewModel.fetchOpenSource().observe(this, new Observer<List<OpenSourceResponse.Repo>>() {
+            @Override
+            public void onChanged(@Nullable List<OpenSourceResponse.Repo> repos) {
+                mBinding.setCount(String.valueOf(repos.size()));
+            }
+        });
     }
 
     @Override

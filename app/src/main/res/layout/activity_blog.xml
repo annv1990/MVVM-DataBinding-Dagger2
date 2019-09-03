@@ -6,6 +6,9 @@
         <variable
             name="viewModel"
             type="com.ajs.simplemvvm.ui.blog.BlogViewModel" />
+        <variable
+            name="count"
+            type="String" />
 
     </data>
 
@@ -13,10 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.blog.BlogActivity">
-        <ImageView
-            android:id="@+id/ivSplash"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
+        <TextView
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:id="@+id/tvCount"
+            android:text="@{count}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
