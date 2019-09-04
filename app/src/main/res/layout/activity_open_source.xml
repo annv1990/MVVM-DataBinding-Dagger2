@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="openSourceViewModel"
-            type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceViewModel" />
+            name="openSourceActivityViewModel"
+            type="com.ajs.simplemvvm.ui.opensource.OpenSourceActivityViewModel" />
 
     </data>
 

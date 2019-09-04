@@ -20,4 +20,9 @@ public class OpenSourceFragmentModule {
         return new OpenSourceAdapter(new ArrayList<>());
     }
 
+    @Provides
+    OpenSourceFragmentViewModel provideOpenSourceFragmentViewModel(){
+        return new OpenSourceFragmentViewModel();
+    }
+
 }

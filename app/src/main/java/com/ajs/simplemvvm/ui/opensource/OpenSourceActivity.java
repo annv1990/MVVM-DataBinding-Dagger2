@@ -10,18 +10,18 @@ import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivityOpenSourceBinding;
-import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceViewModel;
+import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragment;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
 
-public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, OpenSourceViewModel> implements View.OnClickListener {
+public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, OpenSourceActivityViewModel> implements View.OnClickListener {
 
     Button btnOpenSource;
 
     @Inject
-    OpenSourceViewModel mOpenSourceViewModel;
+    OpenSourceActivityViewModel mOpenSourceActivityViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,15 +29,17 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
         AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
+
+
         btnOpenSource = findViewById(R.id.btnOpenSource);
         btnOpenSource.setOnClickListener(this);
+        showOpenSourceFragment();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnOpenSource: {
-                Log.d("ANNV", mOpenSourceViewModel.toString());
                 Log.d("ANNV", "onClick");
                 break;
             }
@@ -51,12 +53,12 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
 
     @Override
     public int getBindingVariable() {
-        return BR.openSourceViewModel;
+        return BR.openSourceActivityViewModel;
     }
 
     @Override
-    public OpenSourceViewModel getViewModel() {
-        return mOpenSourceViewModel;
+    public OpenSourceActivityViewModel getViewModel() {
+        return mOpenSourceActivityViewModel;
     }
 
     @Override
@@ -72,5 +74,14 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
     @Override
     protected void stopLoading() {
         super.stopLoading();
+    }
+
+    private void showOpenSourceFragment(){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+//                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+                .add(R.id.flFragmentContainer, OpenSourceFragment.newInstance(), "OpenSourceFragment")
+                .commit();
     }
 }

@@ -6,7 +6,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class OpenSourceFragmentProvider {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = OpenSourceFragmentModule.class)
     abstract OpenSourceFragment provideOpenSourceFragment();
 
 }

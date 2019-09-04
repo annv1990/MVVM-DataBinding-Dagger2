@@ -4,9 +4,9 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.ajs.simplemvvm.ui.blog.BlogViewModel" />
+       <variable
+           name="opensourceFragmentViewModel"
+           type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentViewModel" />
 
     </data>
 

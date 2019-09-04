@@ -21,7 +21,7 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(modules = {
             OpenSourceModule.class,
-            OpenSourceFragmentProvider.class,
+            OpenSourceFragmentProvider.class
     })
     abstract OpenSourceActivity bindOpenSourceActivity();
 

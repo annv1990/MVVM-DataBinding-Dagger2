@@ -4,24 +4,38 @@
 
     <data>
         <variable
-            name="hero"
-            type="com.ajs.simplemvvm.model.Hero" />
+            name="openSourceIVM"
+            type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceItemViewModel" />
     </data>
 
-    <LinearLayout
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".ui.opensource.OpenSourceActivity">
 
         <ImageView
             android:id="@+id/imageView"
-            bind:imageUrl="@{hero.imageurl}"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="50dp" />
 
         <TextView
-            android:id="@+id/textView"
-            android:text="@{hero.name}"
+            android:id="@+id/tvTitle"
+            android:text="@{openSourceIVM.title}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/tvContent"
+            android:text="@{openSourceIVM.content}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+        <TextView
+            android:id="@+id/tvDescription"
+            android:text="@{openSourceIVM.projectUrl}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
