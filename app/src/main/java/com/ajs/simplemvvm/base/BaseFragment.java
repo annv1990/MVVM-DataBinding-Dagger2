@@ -80,7 +80,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     }
 
     private void performDependencyInjection(){
-        AndroidSupportInjection.inject(this);
+                      AndroidSupportInjection.inject(this);
     }
 
     public T getViewDataBinding() {

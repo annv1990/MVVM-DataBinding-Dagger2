@@ -2,6 +2,7 @@ package com.ajs.simplemvvm.ui.opensource;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,10 +16,16 @@ import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragment;
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 
-public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, OpenSourceActivityViewModel> implements View.OnClickListener {
+public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, OpenSourceActivityViewModel> implements View.OnClickListener, HasSupportFragmentInjector {
 
     Button btnOpenSource;
+
+    @Inject
+    DispatchingAndroidInjector<Fragment> mFragmentDispatchingAndroidInjector;
 
     @Inject
     OpenSourceActivityViewModel mOpenSourceActivityViewModel;
@@ -64,6 +71,11 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
     @Override
     public ActivityOpenSourceBinding getViewDataBinding() {
         return super.getViewDataBinding();
+    }
+
+    @Override
+    public AndroidInjector<Fragment> supportFragmentInjector() {
+        return mFragmentDispatchingAndroidInjector;
     }
 
     @Override
