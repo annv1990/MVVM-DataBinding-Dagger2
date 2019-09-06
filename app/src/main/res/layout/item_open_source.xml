@@ -3,6 +3,7 @@
     xmlns:bind="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="openSourceIVM"
             type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceItemViewModel" />
@@ -11,6 +12,7 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:orientation="vertical"
         tools:context=".ui.opensource.OpenSourceActivity">
 
@@ -21,23 +23,25 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            android:text="@{openSourceIVM.title}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{openSourceIVM.title}"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
         <TextView
             android:id="@+id/tvContent"
-            android:text="@{openSourceIVM.content}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{openSourceIVM.content}"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
         <TextView
             android:id="@+id/tvDescription"
-            android:text="@{openSourceIVM.projectUrl}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@{openSourceIVM.projectUrl}"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 

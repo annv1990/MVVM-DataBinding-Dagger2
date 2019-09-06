@@ -50,7 +50,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         public void onBind(int position) {
             final OpenSourceItemViewModel viewModel = mList.get(position);
-
+            mBinding.setOpenSourceIVM(viewModel);
         }
 
     }

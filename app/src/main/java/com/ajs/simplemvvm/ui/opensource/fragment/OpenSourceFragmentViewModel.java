@@ -59,7 +59,7 @@ public class OpenSourceFragmentViewModel extends BaseViewModel {
         return reposLiveData;
     }
 
-    public LiveData<List<OpenSourceItemViewModel>> getOpListLiveData(){
+    public LiveData<List<OpenSourceItemViewModel>> getOpenSourceListLiveData(){
         return openSourceLiveData;
     }
 

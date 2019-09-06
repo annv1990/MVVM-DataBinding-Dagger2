@@ -4,9 +4,9 @@
 
     <data>
 
-       <variable
-           name="opensourceFragmentViewModel"
-           type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentViewModel" />
+        <variable
+            name="opensourceFragmentViewModel"
+            type="com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentViewModel" />
 
     </data>
 
@@ -15,10 +15,19 @@
         android:layout_height="match_parent"
         tools:context=".ui.opensource.OpenSourceActivity">
 
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="Fragment Open Source" />
+
         <android.support.v7.widget.RecyclerView
+            android:padding="5dp"
             android:id="@+id/rvOpenSource"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitle" />
     </RelativeLayout>
 
 </layout>
