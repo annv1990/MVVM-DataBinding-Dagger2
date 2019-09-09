@@ -1,6 +1,7 @@
 package com.ajs.simplemvvm.ui.opensource.fragment;
 
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.ajs.simplemvvm.BR;
+import com.ajs.simplemvvm.MVVMViewModelProviderFactory;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseFragment;
 import com.ajs.simplemvvm.databinding.FragmentOpenSourceBinding;
@@ -21,12 +23,13 @@ public class OpenSourceFragment extends BaseFragment<FragmentOpenSourceBinding, 
 
     FragmentOpenSourceBinding mFragmentOpenSourceBinding;
 
-    @Inject
     OpenSourceFragmentViewModel mOpenSourceFragmentViewModel;
     @Inject
     LinearLayoutManager mLinearLayoutManager;
     @Inject
     OpenSourceAdapter mOpenSourceAdapter;
+    @Inject
+    MVVMViewModelProviderFactory mFactory;
 
     public static OpenSourceFragment newInstance() {
         Bundle args = new Bundle();
@@ -61,7 +64,7 @@ public class OpenSourceFragment extends BaseFragment<FragmentOpenSourceBinding, 
 
     @Override
     public OpenSourceFragmentViewModel getViewModel() {
-        return mOpenSourceFragmentViewModel;
+        return mOpenSourceFragmentViewModel = ViewModelProviders.of(mActivity, mFactory).get(OpenSourceFragmentViewModel.class);
     }
 
     private void setUp() {

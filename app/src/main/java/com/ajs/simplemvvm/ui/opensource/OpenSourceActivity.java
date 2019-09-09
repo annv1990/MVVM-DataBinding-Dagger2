@@ -1,5 +1,6 @@
 package com.ajs.simplemvvm.ui.opensource;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ajs.simplemvvm.BR;
+import com.ajs.simplemvvm.MVVMViewModelProviderFactory;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivityOpenSourceBinding;
@@ -28,6 +30,8 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
     DispatchingAndroidInjector<Fragment> mFragmentDispatchingAndroidInjector;
 
     @Inject
+    MVVMViewModelProviderFactory mFactory;
+
     OpenSourceActivityViewModel mOpenSourceActivityViewModel;
 
     @Override
@@ -36,8 +40,6 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
         AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
-
-
         btnOpenSource = findViewById(R.id.btnOpenSource);
         btnOpenSource.setOnClickListener(this);
         showOpenSourceFragment();
@@ -65,7 +67,7 @@ public class OpenSourceActivity extends BaseActivity<ActivityOpenSourceBinding, 
 
     @Override
     public OpenSourceActivityViewModel getViewModel() {
-        return mOpenSourceActivityViewModel;
+        return mOpenSourceActivityViewModel = ViewModelProviders.of(this, mFactory).get(OpenSourceActivityViewModel.class);
     }
 
     @Override
