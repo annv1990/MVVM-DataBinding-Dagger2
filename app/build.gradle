@@ -63,4 +63,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofit2Version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2Version"
 
+    annotationProcessor 'com.github.bumptech.glide:glide:4.8.0'
+
 }
+

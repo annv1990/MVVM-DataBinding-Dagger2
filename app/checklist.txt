@@ -1,0 +1,4 @@
+1. Confirm Android Inject in OnCreate
+2. Create ViewModel
+3. Create Module
+4. Create Provider if Fragment

@@ -23,6 +23,7 @@
         <activity android:name=".ui.MainActivity"/>
         <activity android:name=".ui.blog.BlogActivity"/>
         <activity android:name=".ui.opensource.OpenSourceActivity"/>
+        <activity android:name=".ui.home.HomeActivity"/>
     </application>
 
 </manifest>

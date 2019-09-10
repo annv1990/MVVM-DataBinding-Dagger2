@@ -4,6 +4,9 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+import com.ajs.simplemvvm.ui.home.HomeActivityViewModel;
+import com.ajs.simplemvvm.ui.home.first.FirstFragmentViewModel;
+import com.ajs.simplemvvm.ui.home.second.SecondFragmentViewModel;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivityViewModel;
 
 import javax.inject.Inject;
@@ -22,6 +25,12 @@ public class MVVMViewModelProviderFactory extends ViewModelProvider.NewInstanceF
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(OpenSourceActivityViewModel.class)) {
             return (T) new OpenSourceActivityViewModel();
+        } else if (modelClass.isAssignableFrom(FirstFragmentViewModel.class)) {
+            return (T) new FirstFragmentViewModel();
+        } else if (modelClass.isAssignableFrom(SecondFragmentViewModel.class)) {
+            return (T) new SecondFragmentViewModel();
+        } else if (modelClass.isAssignableFrom(HomeActivityViewModel.class)) {
+            return (T) new HomeActivityViewModel();
         }
         return super.create(modelClass);
     }
