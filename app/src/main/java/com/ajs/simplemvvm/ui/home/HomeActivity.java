@@ -16,6 +16,8 @@ import com.ajs.simplemvvm.databinding.ActivityHomeBinding;
 import com.ajs.simplemvvm.ui.home.first.FirstFragment;
 import com.ajs.simplemvvm.ui.home.second.SecondFragment;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
@@ -130,12 +132,23 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
     }
 
     private void showOpenSourceFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .disallowAddToBackStack()
+        Fragment currentFragment = getSupportFragmentManager().findFragmentByTag(fragment.getClass().getSimpleName());
+        List<Fragment> fragmentList = getSupportFragmentManager().getFragments();
+        for(Fragment temp : fragmentList) {
+            getSupportFragmentManager()
+                    .beginTransaction().hide(temp).commit();
+        }
+        if(currentFragment == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .disallowAddToBackStack()
 //                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .replace(R.id.flFragmentContainer, fragment, fragment.getClass().getSimpleName())
-                .commit();
+                    .add(R.id.flFragmentContainer, fragment, fragment.getClass().getSimpleName())
+                    .commit();
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction().show(currentFragment).commit();
+        }
     }
 
     /**
@@ -150,7 +163,7 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
         }
 
         public void onClickMe(View v) {
-            mViewModel.switchSecondeFragment();
+            mViewModel.switchFirstFragment();
         }
 
     }

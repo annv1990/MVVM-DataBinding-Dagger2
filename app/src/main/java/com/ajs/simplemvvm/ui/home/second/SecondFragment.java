@@ -17,15 +17,18 @@ import com.ajs.simplemvvm.base.BaseViewModel;
 import com.ajs.simplemvvm.databinding.FragmentSecondBinding;
 import com.ajs.simplemvvm.ui.home.first.FirstFragment;
 
+import java.util.Random;
+
 import javax.inject.Inject;
 
 public class SecondFragment extends BaseFragment<FragmentSecondBinding, SecondFragmentViewModel> {
+
+    FragmentSecondBinding mFragmentSecondBinding;
 
     @Inject
     MVVMViewModelProviderFactory mFactory;
 
     SecondFragmentViewModel mSecondFragmentViewModel;
-
 
     public static SecondFragment newInstance(){
         Bundle args = new Bundle();
@@ -63,10 +66,8 @@ public class SecondFragment extends BaseFragment<FragmentSecondBinding, SecondFr
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mFragmentSecondBinding = getViewDataBinding();
+        mFragmentSecondBinding.tvRandom.setText("" + new Random().nextInt());
     }
 
-    @Override
-    public FragmentSecondBinding getViewDataBinding() {
-        return super.getViewDataBinding();
-    }
 }
