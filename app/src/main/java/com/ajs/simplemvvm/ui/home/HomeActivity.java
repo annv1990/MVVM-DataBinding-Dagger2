@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.MVVMViewModelProviderFactory;
@@ -23,14 +24,12 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
 public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivityViewModel>
-        implements View.OnClickListener, HasSupportFragmentInjector {
+        implements View.OnClickListener, HasSupportFragmentInjector, HomeNavigator {
 
     ActivityHomeBinding mBinding;
 
-    /*@Inject*/
     FirstFragment mFirstFragment;
 
-   /* @Inject*/
     SecondFragment mSecondFragment;
 
     @Inject
@@ -39,6 +38,8 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
     @Inject
     DispatchingAndroidInjector<Fragment> mFragmentDispatchingAndroidInjector;
 
+    LinearLayout navFirst;
+
     HomeActivityViewModel mViewModel;
     Fragment mActiveFragment;
 
@@ -46,8 +47,11 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         //TODO Inject Dagger
         AndroidInjection.inject(this);
-        mBinding = getViewDataBinding();
+
         super.onCreate(savedInstanceState);
+        mBinding = getViewDataBinding();
+        mViewModel.setNavigator(this);
+        mBinding.setClicker(new HomeClicker(mViewModel));
         setUp();
     }
 
@@ -64,11 +68,6 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
     @Override
     public HomeActivityViewModel getViewModel() {
         return mViewModel = ViewModelProviders.of(this, mFactory).get(HomeActivityViewModel.class);
-    }
-
-    @Override
-    public ActivityHomeBinding getViewDataBinding() {
-        return super.getViewDataBinding();
     }
 
     @Override
@@ -90,34 +89,69 @@ public class HomeActivity extends BaseActivity<ActivityHomeBinding, HomeActivity
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.navFirst: {
-                showOpenSourceFragment(mFirstFragment);
+                switchFirstFragment();
+//                showOpenSourceFragment(mFirstFragment);
                 break;
             }
             case R.id.navSecond: {
-                showOpenSourceFragment(mSecondFragment);
+                switchSecondFragment();
+//                showOpenSourceFragment(mSecondFragment);
                 break;
             }
         }
     }
 
-    private void setUp(){
-        setOnClickListener();
+    @Override
+    public void switchFirstFragment() {
+        Toast.makeText(this, "First", Toast.LENGTH_SHORT).show();
+        showOpenSourceFragment(mFirstFragment);
+    }
+
+    @Override
+    public void switchSecondFragment() {
+        Toast.makeText(this, "Second", Toast.LENGTH_SHORT).show();
+        showOpenSourceFragment(mSecondFragment);
+    }
+
+    private void setUp() {
+        bindView();
         mFirstFragment = FirstFragment.newInstance();
         mSecondFragment = SecondFragment.newInstance();
         showOpenSourceFragment(mFirstFragment);
     }
 
-    private void setOnClickListener(){
-       /* mBinding.bottomNavigation.navFirst.setOnClickListener(this);
-        mBinding.bottomNavigation.navSecond.setOnClickListener(this);*/
+    private void bindView() {
+        /*navFirst = mBinding.navFirst;*/
+        setOnClickListener();
     }
 
-    private void showOpenSourceFragment(Fragment fragment){
+    private void setOnClickListener() {
+        /*navFirst.setOnClickListener(this);*/
+    }
+
+    private void showOpenSourceFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
 //                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .add(R.id.flFragmentContainer, fragment, fragment.getClass().getSimpleName())
+                .replace(R.id.flFragmentContainer, fragment, fragment.getClass().getSimpleName())
                 .commit();
+    }
+
+    /**
+     * An other way to set click handler in MVVM Databinding
+     */
+    public class HomeClicker {
+
+        HomeActivityViewModel mViewModel;
+
+        HomeClicker(HomeActivityViewModel viewModel) {
+            mViewModel = viewModel;
+        }
+
+        public void onClickMe(View v) {
+            mViewModel.switchSecondeFragment();
+        }
+
     }
 }

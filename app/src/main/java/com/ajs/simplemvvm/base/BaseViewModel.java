@@ -3,13 +3,17 @@ package com.ajs.simplemvvm.base;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.ObservableBoolean;
 
-public abstract class BaseViewModel extends ViewModel {
+import java.lang.ref.WeakReference;
+
+public abstract class BaseViewModel<N> extends ViewModel {
 
     private final ObservableBoolean mIsLoading = new ObservableBoolean();
 
     public BaseViewModel() {
         super();
     }
+
+    public WeakReference<N> mNavigator;
 
     @Override
     protected void onCleared() {
@@ -22,5 +26,13 @@ public abstract class BaseViewModel extends ViewModel {
 
     public void setIsLoading(boolean isLoading) {
         mIsLoading.set(isLoading);
+    }
+
+    public N getNavigator() {
+        return mNavigator.get();
+    }
+
+    public void setNavigator(N navigator) {
+        this.mNavigator = new WeakReference<>(navigator);
     }
 }
