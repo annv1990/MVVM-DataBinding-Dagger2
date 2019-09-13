@@ -10,6 +10,7 @@ import com.ajs.simplemvvm.ui.home.second.SecondFragmentProvider;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceModule;
 import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentProvider;
+import com.ajs.simplemvvm.ui.splash.SplashActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -22,6 +23,9 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector()
     abstract MainActivity bindMainActivity();
+
+    @ContributesAndroidInjector()
+    abstract SplashActivity bindSplashActivity();
 
     @ContributesAndroidInjector(modules = {
             OpenSourceModule.class,

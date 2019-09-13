@@ -7,13 +7,16 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
+import dagger.android.AndroidInjection;
+
+public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity{
 
     private T mViewDataBinding;
     private V mViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        performDependencyInjection();
         super.onCreate(savedInstanceState);
         performDataBinding();
     }
@@ -41,6 +44,10 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
 
     protected void stopLoading(){
 
+    }
+
+    public void performDependencyInjection() {
+        AndroidInjection.inject(this);
     }
 
 }

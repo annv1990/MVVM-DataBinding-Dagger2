@@ -8,6 +8,7 @@ import com.ajs.simplemvvm.ui.home.HomeActivityViewModel;
 import com.ajs.simplemvvm.ui.home.first.FirstFragmentViewModel;
 import com.ajs.simplemvvm.ui.home.second.SecondFragmentViewModel;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivityViewModel;
+import com.ajs.simplemvvm.ui.splash.SplashViewModel;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -31,6 +32,8 @@ public class MVVMViewModelProviderFactory extends ViewModelProvider.NewInstanceF
             return (T) new SecondFragmentViewModel();
         } else if (modelClass.isAssignableFrom(HomeActivityViewModel.class)) {
             return (T) new HomeActivityViewModel();
+        } else if (modelClass.isAssignableFrom(SplashViewModel.class)) {
+            return (T) new SplashViewModel();
         }
         return super.create(modelClass);
     }

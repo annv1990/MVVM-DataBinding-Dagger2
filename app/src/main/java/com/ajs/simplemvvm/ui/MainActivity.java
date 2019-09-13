@@ -15,6 +15,7 @@ import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.base.ClickHandler;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
+import com.ajs.simplemvvm.menu.Main2Activity;
 import com.ajs.simplemvvm.model.Hero;
 import com.ajs.simplemvvm.ui.blog.BlogActivity;
 import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     Button btnNext;
     Button btnNextFragment;
     Button btnHome;
+    Button btnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(this);
 
         ((HeroesViewModel) getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
@@ -99,6 +103,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
             case R.id.btnHome: {
                 Intent i = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(i);
+                break;
+            }
+
+            case R.id.btnMenu: {
+                Intent i = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(i);
                 break;
             }

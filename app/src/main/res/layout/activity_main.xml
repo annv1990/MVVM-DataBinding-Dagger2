@@ -74,6 +74,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Open source" />
+
+                <Button
+                    android:id="@+id/btnMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Menu" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

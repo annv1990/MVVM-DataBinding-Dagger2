@@ -7,10 +7,15 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import com.ajs.simplemvvm.BR;
+import com.ajs.simplemvvm.MVVMViewModelProviderFactory;
 import com.ajs.simplemvvm.ui.MainActivity;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivitySplashBinding;
+
+import javax.inject.Inject;
+
+import dagger.android.HasActivityInjector;
 
 public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashViewModel> {
 
@@ -19,6 +24,9 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
 
     Handler mHandler;
     Runnable mRunnable;
+
+    @Inject
+    MVVMViewModelProviderFactory factory;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,10 +55,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
 
     @Override
     public SplashViewModel getViewModel() {
-        if (mViewModel == null)
-            mViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
-
-        return mViewModel;
+        return mViewModel = ViewModelProviders.of(this, factory).get(SplashViewModel.class);
     }
 
     @Override
@@ -67,4 +72,5 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
     protected void stopLoading() {
         super.stopLoading();
     }
+
 }
