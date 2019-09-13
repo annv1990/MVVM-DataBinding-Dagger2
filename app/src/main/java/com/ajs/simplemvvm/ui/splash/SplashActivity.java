@@ -58,6 +58,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
         return mViewModel = ViewModelProviders.of(this, factory).get(SplashViewModel.class);
     }
 
+
     @Override
     public ActivitySplashBinding getViewDataBinding() {
         return super.getViewDataBinding();
