@@ -28,6 +28,10 @@
             android:name=".menu.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="c22e0e96774f2aaaa5f5116217600011354cf570" />
     </application>
 
 </manifest>

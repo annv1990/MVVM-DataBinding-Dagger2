@@ -11,6 +11,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,6 @@ import android.widget.Button;
 import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
-import com.ajs.simplemvvm.base.ClickHandler;
 import com.ajs.simplemvvm.databinding.ActivityMain2Binding;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
 import com.ajs.simplemvvm.menu.Main2Activity;
@@ -28,39 +28,45 @@ import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
 import com.ajs.simplemvvm.ui.heroes.HeroesViewModel;
 import com.ajs.simplemvvm.ui.home.HomeActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.List;
 
-import dagger.android.AndroidInjector;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel>
-        implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener  {
+        implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     ActivityMain2Binding mMainBinding;
     RecyclerView recyclerView;
     HeroesAdapter adapter;
-    ClickHandler mClickHandler;
     HeroesViewModel heroesViewModel;
     Button btnNext;
     Button btnNextFragment;
     Button btnHome;
     Button btnMenu;
+    Button btnSlideMenu;
+    View rlHeader;
+    DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
+        bindView();
         btnNext = findViewById(R.id.btnNext);
         btnNextFragment = findViewById(R.id.btnNextFragment);
         btnNext.setOnClickListener(this);
         btnNextFragment.setOnClickListener(this);
         btnHome = findViewById(R.id.btnHome);
         btnHome.setOnClickListener(this);
-        mClickHandler = new ClickHandler(this);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         btnMenu = findViewById(R.id.btnMenu);
         btnMenu.setOnClickListener(this);
+        btnSlideMenu = findViewById(R.id.btnSlideMenu);
+        btnSlideMenu.setOnClickListener(this);
 
         ((HeroesViewModel) getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
@@ -68,9 +74,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
                 adapter = new HeroesAdapter(MainActivity.this, heroes);
                 recyclerView.setAdapter(adapter);
 //                mMainBinding.setFavoriteHero(heroes.get(0));
+//                mMainBinding.mainView.setFavoriteHero(heroes.get(0));
             }
 
         });
+    }
+
+    private void bindView() {
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -113,6 +126,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
             case R.id.btnMenu: {
                 Intent i = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(i);
+                break;
+            }
+
+            case R.id.btnSlideMenu: {
+                mDrawerLayout.openDrawer(Gravity.START);
                 break;
             }
         }
