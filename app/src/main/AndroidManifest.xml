@@ -13,10 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".menu.Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +24,10 @@
         <activity android:name=".ui.blog.BlogActivity" />
         <activity android:name=".ui.opensource.OpenSourceActivity" />
         <activity android:name=".ui.home.HomeActivity" />
+        <activity
+            android:name=".menu.Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -4,9 +4,14 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -14,6 +19,7 @@ import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.base.ClickHandler;
+import com.ajs.simplemvvm.databinding.ActivityMain2Binding;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
 import com.ajs.simplemvvm.menu.Main2Activity;
 import com.ajs.simplemvvm.model.Hero;
@@ -25,9 +31,12 @@ import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
 
 import java.util.List;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel> implements View.OnClickListener {
+import dagger.android.AndroidInjector;
 
-    ActivityMainBinding mMainBinding;
+public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewModel>
+        implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener  {
+
+    ActivityMain2Binding mMainBinding;
     RecyclerView recyclerView;
     HeroesAdapter adapter;
     ClickHandler mClickHandler;
@@ -47,7 +56,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
         btnHome = findViewById(R.id.btnHome);
         btnHome.setOnClickListener(this);
         mClickHandler = new ClickHandler(this);
-        mMainBinding = getViewDataBinding();
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -59,7 +67,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
             public void onChanged(@Nullable List<Hero> heroes) {
                 adapter = new HeroesAdapter(MainActivity.this, heroes);
                 recyclerView.setAdapter(adapter);
-                mMainBinding.setFavoriteHero(heroes.get(0));
+//                mMainBinding.setFavoriteHero(heroes.get(0));
             }
 
         });
@@ -67,17 +75,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
     @Override
     protected int getResourceLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_main2;
     }
 
     @Override
     public int getBindingVariable() {
         return BR.viewModel;
-    }
-
-    @Override
-    public ActivityMainBinding getViewDataBinding() {
-        return super.getViewDataBinding();
     }
 
     @Override
@@ -113,5 +116,29 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
                 break;
             }
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_tools) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
