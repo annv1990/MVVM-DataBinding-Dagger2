@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.ajs.simplemvvm.BR;
 import com.ajs.simplemvvm.R;
@@ -45,28 +46,18 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     Button btnNextFragment;
     Button btnHome;
     Button btnMenu;
-    Button btnSlideMenu;
-    View rlHeader;
+    Button btnSlideMenuOpen;
+    Button btnSlideMenuClose;
     DrawerLayout mDrawerLayout;
-
+    LinearLayout llM1;
+    LinearLayout llM2;
+    LinearLayout llM3;
+;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         bindView();
-        btnNext = findViewById(R.id.btnNext);
-        btnNextFragment = findViewById(R.id.btnNextFragment);
-        btnNext.setOnClickListener(this);
-        btnNextFragment.setOnClickListener(this);
-        btnHome = findViewById(R.id.btnHome);
-        btnHome.setOnClickListener(this);
-        recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        btnMenu = findViewById(R.id.btnMenu);
-        btnMenu.setOnClickListener(this);
-        btnSlideMenu = findViewById(R.id.btnSlideMenu);
-        btnSlideMenu.setOnClickListener(this);
 
         ((HeroesViewModel) getViewModel()).getHeroes().observe(this, new Observer<List<Hero>>() {
             @Override
@@ -81,9 +72,30 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
     }
 
     private void bindView() {
+        btnNext = findViewById(R.id.btnNext);
+        btnNextFragment = findViewById(R.id.btnNextFragment);
+        btnNext.setOnClickListener(this);
+        btnNextFragment.setOnClickListener(this);
+        btnHome = findViewById(R.id.btnHome);
+        btnHome.setOnClickListener(this);
+        recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(this);
+        btnSlideMenuOpen = findViewById(R.id.btnSlideMenuOpen);
+        btnSlideMenuOpen.setOnClickListener(this);
+        llM1 = findViewById(R.id.llM1);
+        llM1.setOnClickListener(this);
+        llM2 = findViewById(R.id.llM2);
+        llM2.setOnClickListener(this);
+        llM3 = findViewById(R.id.llM3);
+        llM3.setOnClickListener(this);
+        btnSlideMenuClose = findViewById(R.id.btnSlideMenuClose);
+        btnSlideMenuClose.setOnClickListener(this);
+
         mDrawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -129,10 +141,31 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
                 break;
             }
 
-            case R.id.btnSlideMenu: {
+            case R.id.btnSlideMenuOpen: {
                 mDrawerLayout.openDrawer(Gravity.START);
                 break;
             }
+
+            case R.id.btnSlideMenuClose: {
+                mDrawerLayout.closeDrawer(Gravity.START);
+                break;
+            }
+
+            case R.id.llM1: {
+                mDrawerLayout.closeDrawer(Gravity.START);
+                break;
+            }
+
+            case R.id.llM2: {
+                mDrawerLayout.closeDrawer(Gravity.START);
+                break;
+            }
+
+            case R.id.llM3: {
+                mDrawerLayout.closeDrawer(Gravity.START);
+                break;
+            }
+
         }
     }
 
@@ -155,8 +188,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }
