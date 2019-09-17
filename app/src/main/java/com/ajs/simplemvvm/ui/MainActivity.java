@@ -117,6 +117,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
     @Override
     public void onClick(View v) {
+
+
         switch (v.getId()) {
             case R.id.btnNext: {
                 Intent i = new Intent(MainActivity.this, BlogActivity.class);
@@ -150,6 +152,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
                 mDrawerLayout.closeDrawer(Gravity.START);
                 break;
             }
+
 
             case R.id.llM1: {
                 mDrawerLayout.closeDrawer(Gravity.START);

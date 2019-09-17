@@ -51,14 +51,16 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/llM1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/llM1"
+                        style="@style/SelectableItemBackground"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:clickable="true"
                         android:orientation="horizontal">
 
                         <TextView
@@ -71,8 +73,10 @@
 
                     <LinearLayout
                         android:id="@+id/llM2"
+                        style="@style/SelectableItemBackground"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:clickable="true"
                         android:orientation="horizontal">
 
                         <TextView
@@ -85,8 +89,10 @@
 
                     <LinearLayout
                         android:id="@+id/llM3"
+                        style="@style/SelectableItemBackground"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:clickable="true"
                         android:orientation="horizontal">
 
                         <TextView

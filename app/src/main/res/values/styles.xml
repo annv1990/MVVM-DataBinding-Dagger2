@@ -10,11 +10,12 @@
 
     <style name="MVVM_Navigation_Item">
         <item name="android:orientation">vertical</item>
-        <item name="android:layout_marginTop">5dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -25,5 +26,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- click item theme-->
+    <style name="SelectableItemTheme">
+        <item name="colorControlHighlight">#1e333d</item>
+    </style>
+    <style name="SelectableItemBackground">
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 
 </resources>
