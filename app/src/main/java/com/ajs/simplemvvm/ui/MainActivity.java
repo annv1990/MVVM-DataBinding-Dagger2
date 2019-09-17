@@ -29,6 +29,7 @@ import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
 import com.ajs.simplemvvm.ui.heroes.HeroesViewModel;
 import com.ajs.simplemvvm.ui.home.HomeActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
+import com.ajs.simplemvvm.ui.scanner.ScannerActivity;
 import com.crashlytics.android.Crashlytics;
 
 import java.util.List;
@@ -138,7 +139,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
             }
 
             case R.id.btnMenu: {
-                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+//                Intent i = new Intent(MainActivity.this, Main2Activity.class);
+                Intent i = new Intent(MainActivity.this, ScannerActivity.class);
                 startActivity(i);
                 break;
             }

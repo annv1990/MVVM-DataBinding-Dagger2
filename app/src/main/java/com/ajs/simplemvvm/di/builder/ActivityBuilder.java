@@ -10,6 +10,7 @@ import com.ajs.simplemvvm.ui.home.second.SecondFragmentProvider;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceModule;
 import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentProvider;
+import com.ajs.simplemvvm.ui.scanner.ScannerActivity;
 import com.ajs.simplemvvm.ui.splash.SplashActivity;
 
 import dagger.Module;
@@ -39,5 +40,7 @@ public abstract class ActivityBuilder {
             SecondFragnentModule.class*/})
     abstract HomeActivity bindHomeActivity();
 
+    @ContributesAndroidInjector()
+    abstract ScannerActivity bindScannerActivity();
 
 }

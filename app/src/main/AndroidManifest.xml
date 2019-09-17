@@ -29,6 +29,8 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".ui.scanner.ScannerActivity" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="c22e0e96774f2aaaa5f5116217600011354cf570" />
