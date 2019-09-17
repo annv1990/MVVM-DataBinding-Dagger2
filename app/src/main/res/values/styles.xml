@@ -36,4 +36,12 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
+    <!-- Ripple animation-->
+    <style name="RippleTheme">
+        <item name="colorControlHighlight">#FFF</item>
+    </style>
+    <style name="RippleItemBackground">
+        <item name="android:theme">@style/RippleTheme</item>
+        <item name="android:background">@drawable/ripple_selector</item>
+    </style>
 </resources>
