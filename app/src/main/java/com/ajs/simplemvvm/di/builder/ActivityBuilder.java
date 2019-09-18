@@ -7,6 +7,7 @@ import com.ajs.simplemvvm.ui.home.HomeActivity;
 import com.ajs.simplemvvm.ui.home.HomeActivityModule;
 import com.ajs.simplemvvm.ui.home.first.FirstFragmentProvider;
 import com.ajs.simplemvvm.ui.home.second.SecondFragmentProvider;
+import com.ajs.simplemvvm.ui.nkuscanner.NKUScannerActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceModule;
 import com.ajs.simplemvvm.ui.opensource.fragment.OpenSourceFragmentProvider;
@@ -42,5 +43,8 @@ public abstract class ActivityBuilder {
 
     @ContributesAndroidInjector()
     abstract ScannerActivity bindScannerActivity();
+
+    @ContributesAndroidInjector()
+    abstract NKUScannerActivity bindNKNkuScannerActivity();
 
 }

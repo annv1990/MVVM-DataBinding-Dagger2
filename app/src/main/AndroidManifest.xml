@@ -3,6 +3,8 @@
     package="com.ajs.simplemvvm">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MVVMApplication"
@@ -30,6 +32,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity android:name=".ui.scanner.ScannerActivity" />
+        <activity android:name=".ui.nkuscanner.NKUScannerActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

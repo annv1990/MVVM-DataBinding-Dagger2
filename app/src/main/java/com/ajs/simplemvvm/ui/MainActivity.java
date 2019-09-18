@@ -22,14 +22,13 @@ import com.ajs.simplemvvm.R;
 import com.ajs.simplemvvm.base.BaseActivity;
 import com.ajs.simplemvvm.databinding.ActivityMain2Binding;
 import com.ajs.simplemvvm.databinding.ActivityMainBinding;
-import com.ajs.simplemvvm.menu.Main2Activity;
 import com.ajs.simplemvvm.model.Hero;
 import com.ajs.simplemvvm.ui.blog.BlogActivity;
 import com.ajs.simplemvvm.ui.heroes.HeroesAdapter;
 import com.ajs.simplemvvm.ui.heroes.HeroesViewModel;
 import com.ajs.simplemvvm.ui.home.HomeActivity;
+import com.ajs.simplemvvm.ui.nkuscanner.NKUScannerActivity;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivity;
-import com.ajs.simplemvvm.ui.scanner.ScannerActivity;
 import com.crashlytics.android.Crashlytics;
 
 import java.util.List;
@@ -140,7 +139,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, HeroesViewMo
 
             case R.id.btnMenu: {
 //                Intent i = new Intent(MainActivity.this, Main2Activity.class);
-                Intent i = new Intent(MainActivity.this, ScannerActivity.class);
+                Intent i = new Intent(MainActivity.this, NKUScannerActivity.class);
                 startActivity(i);
                 break;
             }

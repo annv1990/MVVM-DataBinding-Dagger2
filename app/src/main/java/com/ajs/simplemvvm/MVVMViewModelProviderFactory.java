@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import com.ajs.simplemvvm.ui.home.HomeActivityViewModel;
 import com.ajs.simplemvvm.ui.home.first.FirstFragmentViewModel;
 import com.ajs.simplemvvm.ui.home.second.SecondFragmentViewModel;
+import com.ajs.simplemvvm.ui.nkuscanner.NKUScannerActivityViewModel;
 import com.ajs.simplemvvm.ui.opensource.OpenSourceActivityViewModel;
 import com.ajs.simplemvvm.ui.scanner.ScannerActivityViewModel;
 import com.ajs.simplemvvm.ui.splash.SplashViewModel;
@@ -39,6 +40,10 @@ public class MVVMViewModelProviderFactory extends ViewModelProvider.NewInstanceF
         // ScannerActivityViewModel.class
         else if (modelClass.isAssignableFrom(ScannerActivityViewModel.class)) {
             return (T) new ScannerActivityViewModel();
+        }
+        // ScannerActivityViewModel.class
+        else if (modelClass.isAssignableFrom(NKUScannerActivityViewModel.class)) {
+            return (T) new NKUScannerActivityViewModel();
         }
         return super.create(modelClass);
     }
